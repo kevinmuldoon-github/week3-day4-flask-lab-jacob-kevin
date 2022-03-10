@@ -1,0 +1,35 @@
+body {
+    font-size:20px;
+    font-family:Arial, Helvetica, sans-serif
+}
+
+form {
+
+    padding:15px;
+    background-color: beige;
+    width:35%;
+    border:1px solid black;
+}
+
+form input {
+    margin:15px 0;
+}
+
+.my-table {
+
+    text-align:center;
+    padding:15px;
+    background-color: #fffafa;
+    border:1px solid black;
+}
+
+
+.my-table th {
+    background-color: yellow;
+}
+
+.my-table td {
+    padding: 15px;;
+    border-left:1px solid black;
+    border-right:1px solid black;
+}

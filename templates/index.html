@@ -1,22 +1,57 @@
 {% extends "base.html" %} {% block content %}
-<h1>My Todo List!</h1>
+<h1>Our Amazing Events</h1>
 
-<form action="/tasks" method="post">
-  <label for="title">Title</label>
-  <input type="text" name="title" id="title" />
-  <label for="description">Description</label>
-  <textarea name="description" rows="2" cols="30"></textarea>
-  <input type="submit" value="Add Task" />
+<h2>Please submit a new event</h2>
+
+<form action="/events" method="post">
+  <label for="date">Date: </label>
+  <input type="date" name="date" id="date" /><br />
+  <label for="name of event">Name of Event: </label>
+  <input type="text" name="name of event" id="name_of_event" /><br />
+  <label for="number of guests">Number of Guests: </label>
+  <input type="number" name="number of guests" id="number_of_guests" /><br />
+  <label for="room location">Room Location: </label>
+  <input type="text" name="room location" id="room_location" /><br />
+  <label for="description">Description: </label>
+  <textarea name="description" rows="1" cols="30"></textarea><br />
+  <label for="recurring">Recurring: True</label>
+  <input type="radio" name="recurring" id="recurring-true" value="True"/>
+  <label for="recurring">False</label>
+  <input type="radio" name="recurring" id="recurring-false" checked="checked" value="False"/><br />
+  <label for="recurring period">Recurring Period:</label>
+  <input type="text" name="recurring period" id="recurring period" /><br />
+  <input type="submit" value="Add Event" />
 </form>
 
-{% for task in tasks %}  
-<div>
-  <p>
-    {{ task.title }}: <b>{{ task.description }}</b>
-    {% if task.done%}
-    <span>&#9989;</span>
-    {% endif %}
-  </p>
-</div>
+
+<table class="my-table">
+  <tr>
+    <th><strong>Date</strong></th>
+    <th><strong>Name of Event</strong></th>
+    <th><strong>Number of Guests</strong></th>
+    <th><strong>Room Location</strong></th>
+    <th><strong>Description</strong></th>
+    <th><strong>Recurring</strong></th>
+    <th><strong>Recurring Period</strong></th>
+</tr>
+
+{% for event in events %}  
+<tr>
+  <td>{{event.date}}</td>
+  <td>{{event.name_of_event}}</td>
+  <td>{{event.no_of_guests}}</td>
+  <td>{{event.room_location}}</td>
+  <td>{{event.description}}</td>
+  <td>{% if event.recurring == True%}
+      &#10004;
+      {%else%}
+      No
+    {% endif %}</td>
+  <td>{% if event.reccuring == True %}
+      {{event.reccuring_period}}
+      {% endif %}
+  </td>
+</tr>
 {% endfor %}
+</table>
 {% endblock %}
